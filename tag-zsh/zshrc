@@ -1,0 +1,80 @@
+source ${HOME}/.dotfiles/.antigen/antigen.zsh
+
+antigen use oh-my-zsh
+antigen bundles <<EOBUNDLES
+  brew
+  bundler
+  capistrano
+  chruby
+  docker
+  gem
+  git
+  golang
+  mix
+  node
+  npm
+  vagrant
+  nyan
+  zsh-users/zsh-syntax-highlighting
+EOBUNDLES
+
+antigen-apply
+
+source ${HOME}/.dotfiles/.antigen/rwoeber.zsh-theme
+alias vi=vim
+
+
+HISTFILE=${HOME}/.zsh_history
+HISTSIZE=20000
+SAVEHIST=20000
+
+#  Disable Ctrl-D
+set -o ignoreeof
+
+setopt append_history
+setopt extended_history
+setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+unsetopt correctall
+
+zstyle ':completion:*' insert-tab pending
+zstyle ':completion:*:manuals' separate-sections true
+
+zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~'
+zstyle ':completion:*:*cd:*' ignored-patterns '(*/|)(CVS|SCCS|SVN|GIT|HG)'
+zstyle ':completion::*:(git|less|rm|emacs)' ignore-line true
+zstyle ':completion:*' ignore-parents parent pwd
+
+# search history via exaxt prefix match
+bindkey "\e[A"  history-beginning-search-backward-end
+bindkey "\e[B"  history-beginning-search-forward-end
+bindkey "OA" history-beginning-search-backward-end
+bindkey "OB" history-beginning-search-forward-end
+
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+
+zstyle -d ':completion:*:hosts' hosts
+zstyle ':completion:*:hosts' hosts $_ssh_hosts
+
+# Ruby
+alias rake="noglob rake"
+alias gemdir="open `gem env gemdir`/gems"
+
+export LESS="-X ${LESS}"
+# use vim as manpager
+export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nu nonu noma' -c 'colo rich' -"
+
+#if (which tmux >/dev/null) && [[ -o login ]] &&  [[ -z "$TMUX" ]] && [[ -f ~/.dotfiles//scripts/tmux-login ]]; then
+#  (tmux list-sessions 2>/dev/null | grep -q attached ) || exec zsh "$HOME/.dotfiles/scripts/tmux-login" $(which tmux)
+#fi
+
+UNAME=$(uname -s)
+# include System zshrc. zsh/zshrc.local is ignored in VCS
+[[ -f ~/.zsh/${UNAME}.zshrc ]] && source ~/.zsh/${UNAME}.zshrc
+[[ -f ~/.zsh/local.zshrc ]] && source ~/.zsh/local.zshrc
+
+
+export PATH=./.bin:${HOME}/bin:${PATH}

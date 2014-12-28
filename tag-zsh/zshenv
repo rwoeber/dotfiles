@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+export TZ="CET"
+export CVS_RSH="ssh"
+
+export AUTOFEATURE=true
+export RSPEC=true
+
+export EDITOR=vi
+export PAGER=more
+export BLOCKSIZE=K
+export OS_TYPE=`uname -s`
+export ANT_ARGS='-logger org.apache.tools.ant.listener.AnsiColorLogger'
+
+UNAME=$(uname -s)
+# include System zshenv. zsh/zshenv.local is ignored in VCS
+[[ -f ~/.zsh/${UNAME}.zshenv ]] && source ~/.zsh/${UNAME}.zshenv
+[[ -f ~/.zsh/local.zshenv ]] && source ~/.zsh/local.zshenv
