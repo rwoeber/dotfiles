@@ -1,0 +1,106 @@
+[user]
+  name = Richard Wöber
+  email = rwoeber@me.com
+  signingkey = B3A85AFD
+
+[core]
+  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  editor = vim
+  pager = less -FXRS
+  excludesfile = ~/.gitignore_global
+  autocrlf = input
+  trustctime = false
+
+[alias]
+  aa = add --all :/
+  s = status -sb
+  ignored = status -s --ignored
+  d = diff
+  dw = diff --ignore-space-at-eol -b -w --ignore-blank-lines
+  dc = diff --cached
+  dt = difftool
+  dtw = difftool --ignore-space-at-eol -b -w --ignore-blank-lines
+  co = checkout
+  cob = checkout -b
+  cot = checkout -t
+  ci = commit
+  cia = commit --amend
+  wip = commit -m 'WIP'
+  pur = pull --rebase
+  amend = commit --amend -C HEAD
+  ready = rebase -i @{u}
+  br = branch
+  rmuntracked = "!git ls-files --others --exclude-standard | xargs rm"
+  rmdeleted = "!git ls-files --deleted -z | xargs -0 git rm"
+  unstage = "reset HEAD "
+  ls = log --pretty=format:'%Cred%h %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  ll = log --pretty=format:'%Cred%h %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --numstat
+  lola = log --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --graph --decorate --all
+  backup = push --force --mirror backup
+  human = name-rev --name-only --refs='refs/heads/*'
+  assume = update-index --assume-unchanged
+  unassume = update-index --no-assume-unchanged
+  assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+  alias = "!git config -l | grep alias | cut -c 7-"
+  lasttag = describe --tags --abbrev=0
+  serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
+
+[apply]
+  whitespace = nowarn
+[rerere]
+	enabled = true
+[merge]
+	stat = true
+
+[color]
+  ui = auto
+  status = auto
+  branch = auto
+[color "branch"]
+  current = yellow reverse
+  local = green
+  remote = cyan
+  plain = white
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+[color "status"]
+  added = cyan
+  changed = yellow
+  untracked = red
+[color "decorate"]
+  branch = green
+  remoteBranch = cyan
+  tag = yellow 
+  stash =yellow 
+  HEAD = black yellow
+
+
+[diff]
+  tool = Kaleidoscope
+[difftool]
+  prompt = false
+[difftool "Kaleidoscope"]
+  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+
+
+[branch]
+  autosetuprebase = always
+[push] 
+  default = simple
+[branch "master"]
+	remote = origin
+[remote "origin"]
+	push = master
+	push = +refs/tags/*:refs/tags/*
+	tagopt = --tags
+
+[github]
+  user = rwoeber
+
+[iwelt]
+	email = richard.woeber@iwelt.de
+	signingkey = D01A11F4
