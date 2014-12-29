@@ -1,0 +1,3 @@
+HOSTNAME="macbook"
+TAGS="rwoeber osx zsh git tmux postgresql mysql"
+SYMLINK_DIRS="zsh vim bundle"
