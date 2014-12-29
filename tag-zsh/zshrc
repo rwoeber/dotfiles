@@ -71,10 +71,8 @@ export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nu nonu noma' -c 
 #  (tmux list-sessions 2>/dev/null | grep -q attached ) || exec zsh "$HOME/.dotfiles/scripts/tmux-login" $(which tmux)
 #fi
 
-UNAME=$(uname -s)
-# include System zshrc. zsh/zshrc.local is ignored in VCS
-[[ -f ~/.zsh/${UNAME}.zshrc ]] && source ~/.zsh/${UNAME}.zshrc
-[[ -f ~/.zsh/local.zshrc ]] && source ~/.zsh/local.zshrc
+[[ -f ~/.zshrc.os ]] && source ~/.zshrc.os
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 
 export PATH=./.bin:${HOME}/bin:${PATH}
