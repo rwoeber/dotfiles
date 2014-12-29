@@ -29,7 +29,7 @@ Vim
 -------
 Clone Vundle:
 
-    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle.vim
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 
 Install the plugins

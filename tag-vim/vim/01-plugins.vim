@@ -1,21 +1,34 @@
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-fugitive'
-Bundle 'kien/ctrlp.vim'
-Bundle 'itchyny/lightline.vim'
-Bundle 'tpope/vim-surround'
-Bundle 'garbas/vim-snipmate'
-Bundle 'mileszs/ack.vim'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'mattn/emmet-vim'
-Bundle 'tommcdo/vim-lion'
-Bundle 'tpope/vim-vinegar'
+" vundle 
+" $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" in vim: :PluginInstall
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'kien/ctrlp.vim'
+Plugin 'itchyny/lightline.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'garbas/vim-snipmate'
+Plugin 'mileszs/ack.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'mattn/emmet-vim'
+Plugin 'tommcdo/vim-lion'
+Plugin 'tpope/vim-vinegar'
 " Language Support
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-haml'
-Bundle 'elixir-lang/vim-elixir'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-haml'
+Plugin 'elixir-lang/vim-elixir'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 
 let g:lightline = {
