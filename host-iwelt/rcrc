@@ -1,4 +1,4 @@
 HOSTNAME="macbook"
-TAGS="iwelt osx zsh git tmux postgresql mysql"
+TAGS="iwelt osx zsh git vim tmux postgresql mysql"
 SYMLINK_DIRS="zsh vim bundle"
 EXCLUDES="README.markdown"
