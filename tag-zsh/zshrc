@@ -1,22 +1,29 @@
 source ${HOME}/.dotfiles/.antigen/antigen.zsh
 
 antigen use oh-my-zsh
-antigen bundles <<EOBUNDLES
-  brew
-  bundler
-  capistrano
-  chruby
-  docker
-  gem
-  git
-  golang
-  mix
-  node
-  npm
-  vagrant
-  nyan
-  zsh-users/zsh-syntax-highlighting
-EOBUNDLES
+
+
+antigen bundle capistrano
+antigen bundle bundler
+antigen bundle chruby
+antigen bundle gem
+antigen bundle git
+antigen bundle mix
+antigen bundle node
+antigen bundle npm
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+
+case $(uname -s) in
+Darwin)
+   antigen bundle brew
+   antigen bundle docker
+   antigen bundle golang
+   antigen bundle vagrant
+   ;;
+FreeBSD)
+   ;;
+esac
 
 antigen-apply
 
