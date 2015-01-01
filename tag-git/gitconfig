@@ -2,7 +2,7 @@
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
   editor = vim
   pager = less -FXRS
-  excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore
   autocrlf = input
   trustctime = false
 
@@ -43,9 +43,9 @@
 [apply]
   whitespace = nowarn
 [rerere]
-	enabled = true
+  enabled = true
 [merge]
-	stat = true
+  stat = true
 
 [color]
   ui = auto
@@ -69,9 +69,9 @@
 [color "decorate"]
   branch = green
   remoteBranch = cyan
-  tag = yellow 
-  stash =yellow 
-  HEAD = black yellow
+  tag = yellow
+  stash = yellow
+  HEAD = magenta
 
 
 [diff]
@@ -87,11 +87,11 @@
 [push] 
   default = simple
 [branch "master"]
-	remote = origin
+  remote = origin
 [remote "origin"]
-	push = master
-	push = +refs/tags/*:refs/tags/*
-	tagopt = --tags
+  push = master
+  push = +refs/tags/*:refs/tags/*
+  tagopt = --tags
 
 [include]
   path = ~/.gitconfig.local
