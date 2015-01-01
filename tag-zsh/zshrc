@@ -82,4 +82,4 @@ export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nu nonu noma' -c 
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 
-export PATH=./.bin:${HOME}/bin:${PATH}
+export PATH=./.bin:${HOME}/bin:${HOME}/.dotfiles/.bin:${PATH}
