@@ -1,71 +1,75 @@
 [core]
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-  editor = vim
+  editor = vim -pc ':normal gg'
   pager = less -FXRS
   excludesfile = ~/.gitignore
   autocrlf = input
   trustctime = false
+  quotepath = false
 
 [alias]
-  aa = add --all :/
-  s = status -sb
-  ignored = status -s --ignored
-  d = diff
-  dw = diff --ignore-space-at-eol -b -w --ignore-blank-lines
-  dc = diff --cached
-  dt = difftool
-  dtw = difftool --ignore-space-at-eol -b -w --ignore-blank-lines
+  aa = add --all --intent-to-add :/
+  aaa = add --all :/
+  ap = add --patch
+  alias = "!git config -l | grep alias | cut -c 7-"
+  amend = commit --amend -C HEAD
+  assume = update-index --assume-unchanged
+  assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+  at = add --intent-to-add
+	authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"  
+  backup = push --force --mirror backup
+  br = branch -vv
+  ci = commit
+  cia = commit --amend
   co = checkout
   cob = checkout -b
   cot = checkout -t
-  ci = commit
-  cia = commit --amend
-  wip = commit -m 'WIP'
-  pur = pull --rebase
-  amend = commit --amend -C HEAD
-  ready = rebase -i @{u}
-  br = branch
-  rmuntracked = "!git ls-files --others --exclude-standard | xargs rm"
-  rmdeleted = "!git ls-files --deleted -z | xargs -0 git rm"
-  unstage = "reset HEAD "
-  ls = log --pretty=format:'%Cred%h %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  d = diff
+  dc = diff --cached
+  dt = difftool
+  dtw = difftool --ignore-space-at-eol -b -w --ignore-blank-lines
+  dw = diff --ignore-space-at-eol -b -w --ignore-blank-lines
+  filelog = log -u
+  human = name-rev --name-only --refs='refs/heads/*'
+  ignored = ls-files --exclude-standard --ignored --others
+  irb = rebase --interactive
+  lasttag = describe --tags --abbrev=0
   ll = log --pretty=format:'%Cred%h %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --numstat
   lola = log --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --graph --decorate --all
-  backup = push --force --mirror backup
-  human = name-rev --name-only --refs='refs/heads/*'
-  assume = update-index --assume-unchanged
+  ls = log --pretty=format:'%Cred%h %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  pur = pull --rebase
+  ready = rebase -i @{u}
+  rmdeleted = "!git ls-files --deleted -z | xargs -0 git rm"
+  rmuntracked = "!git ls-files --others --exclude-standard | xargs rm"
+  s = status -sb
   unassume = update-index --no-assume-unchanged
-  assumed = "!git ls-files -v | grep ^h | cut -c 3-"
-  alias = "!git config -l | grep alias | cut -c 7-"
-  lasttag = describe --tags --abbrev=0
-  serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
+  unstage = "reset HEAD "
+  wip = commit -m 'WIP'
 
-[apply]
-  whitespace = nowarn
-[rerere]
-  enabled = true
-[merge]
-  stat = true
 
 [color]
   ui = auto
   status = auto
   branch = auto
+
 [color "branch"]
   current = yellow reverse
   local = green
   remote = cyan
   plain = white
+
 [color "diff"]
   meta = yellow bold
   frag = magenta bold
   old = red bold
   new = green bold
   whitespace = red reverse
+
 [color "status"]
   added = cyan
   changed = yellow
   untracked = red
+
 [color "decorate"]
   branch = green
   remoteBranch = cyan
@@ -75,19 +79,43 @@
 
 
 [diff]
+  renames = copies
+  mnemonicprefix = true
   tool = Kaleidoscope
+  algorithm = histogram
+
+[diff "zip"]
+	textconv = unzip -c -a
+
 [difftool]
   prompt = false
+
 [difftool "Kaleidoscope"]
   cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
 
 
-[branch]
-  autosetuprebase = always
+
+[apply]
+  whitespace = nowarn
+
+[rerere]
+  enabled = true
+
+[merge]
+  stat = true
+
 [push] 
   default = simple
+
+[pull]
+  rebase = true  
+
+[branch]
+  autosetuprebase = always
+
 [branch "master"]
   remote = origin
+
 [remote "origin"]
   push = master
   push = +refs/tags/*:refs/tags/*
