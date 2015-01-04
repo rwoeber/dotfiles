@@ -4,7 +4,6 @@
 *~
 ._*
 *.swp
-*.lock
 *.log
 .swp
 .DS_Store
