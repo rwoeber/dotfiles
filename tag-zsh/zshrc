@@ -12,6 +12,8 @@ antigen bundle mix
 antigen bundle node
 antigen bundle npm
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle arialdomartini/oh-my-git
+antigen bundle --url=${HOME} --loc=".dotfiles/.local/rwoeber" --btype=theme --no-local-clone
 
 
 case $(uname -s) in
@@ -27,7 +29,6 @@ esac
 
 antigen-apply
 
-source ${HOME}/.dotfiles/.antigen/rwoeber.zsh-theme
 alias vi=vim
 
 
