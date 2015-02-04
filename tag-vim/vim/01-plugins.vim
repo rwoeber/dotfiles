@@ -36,6 +36,9 @@ let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename'], ['ctrlpmark'] ]
       \ },
+      \ 'component': {
+      \   'lineinfo': ' %3l:%-2v'
+      \ },
       \ 'component_function': {
       \   'mode':     'MyMode',
       \   'filename': 'MyFilename',
@@ -44,10 +47,9 @@ let g:lightline = {
       \   'modified': 'MyModified',
       \   'ctrlpmark': 'CtrlPMark'
       \ },
-      \ 'separator': { 'left': '⮀', 'right': '⮂' },
-      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
       \ }
-
 
 
 function! MyMode()
@@ -60,11 +62,11 @@ endfunction
 
 
 function! MyModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '' : &modifiable ? '' : '-'
 endfunction
 
 function! MyReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
 endfunction
 
 
@@ -82,7 +84,7 @@ endfunction
 function! MyFugitive()
   if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
     let _ = fugitive#head()
-    return strlen(_) ? '⭠ '._ : ''
+    return strlen(_) ? ' '._ : ''
   endif
   return ''
 endfunction
