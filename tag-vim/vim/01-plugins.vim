@@ -22,6 +22,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/emmet-vim'
 Plugin 'tommcdo/vim-lion'
 Plugin 'tpope/vim-vinegar'
+Plugin 'ryanss/vim-hackernews'
 " Language Support
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-haml'

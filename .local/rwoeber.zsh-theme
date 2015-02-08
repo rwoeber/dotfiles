@@ -70,9 +70,6 @@ function custom_build_prompt {
     local yellow_on_white="%K{white}%F{yellow}"
     local red_on_white="%K{white}%F{red}"
     local red_on_black="%K{black}%F{red}"
-    local black_on_red="%K{red}%F{black}"
-    local white_on_red="%K{red}%F{white}"
-    local yellow_on_red="%K{red}%F{yellow}"
  
     # Flags
     local omg_default_color_on="${black_on_white}"
@@ -101,14 +98,32 @@ function custom_build_prompt {
         prompt+=$(enrich_append $action "${omg_has_action_in_progress_symbol} $action" "${red_on_white}")
 
         # where
+        if [[ $has_modifications == true || $has_modifications_cached == true || $has_adds == true || \
+              $has_deletions == true || $has_deletions_cached == true || $has_untracked_files == true || \
+              $ready_to_commit == true ]]; then
+            local highlight=red
+        elif [[ $detached == true ]]; then
+            local highlight=magenta
+        elif [[ $has_diverged == true ]]; then
+            local highlight=cyan
+        elif [[ $commits_behind -gt 0 || $commits_ahead -gt 0  ]]; then
+            local highlight=blue
+        else
+           local highlight=green
+        fi
 
-        prompt="${prompt} ${white_on_red} ${black_on_red}"
+        local black_on_highlight="%K{$highlight}%F{black}"
+        local white_on_highlight="%K{$highlight}%F{white}"
+        local yellow_on_highlight="%K{$highlight}%F{yellow}"
+        
+
+        prompt="${prompt} ${white_on_highlight} ${black_on_highlight}"
         if [[ $detached == true ]]; then
-            prompt+=$(enrich_append $detached $omg_detached_symbol "${white_on_red}")
-            prompt+=$(enrich_append $detached "(${current_commit_hash:0:7})" "${black_on_red}")
+            prompt+=$(enrich_append $detached $omg_detached_symbol "${white_on_highlight}")
+            prompt+=$(enrich_append $detached "(${current_commit_hash:0:7})" "${black_on_highlight}")
         else            
             if [[ $has_upstream == false ]]; then
-                prompt+=$(enrich_append true "-- ${omg_not_tracked_branch_symbol}  --  (${current_branch})" "${black_on_red}")
+                prompt+=$(enrich_append true "-- ${omg_not_tracked_branch_symbol}  --  (${current_branch})" "${black_on_highlight}")
             else
                 if [[ $will_rebase == true ]]; then
                     local type_of_upstream=$omg_rebase_tracking_branch_symbol
@@ -117,24 +132,24 @@ function custom_build_prompt {
                 fi
 
                 if [[ $has_diverged == true ]]; then
-                    prompt+=$(enrich_append true "-${commits_behind} ${omg_has_diverged_symbol} +${commits_ahead}" "${white_on_red}")
+                    prompt+=$(enrich_append true "-${commits_behind} ${omg_has_diverged_symbol} +${commits_ahead}" "${white_on_highlight}")
                 else
                     if [[ $commits_behind -gt 0 ]]; then
-                        prompt+=$(enrich_append true "-${commits_behind} %F{white}${omg_can_fast_forward_symbol}%F{black} --" "${black_on_red}")
+                        prompt+=$(enrich_append true "-${commits_behind} %F{white}${omg_can_fast_forward_symbol}%F{black} --" "${black_on_highlight}")
                     fi
                     if [[ $commits_ahead -gt 0 ]]; then
-                        prompt+=$(enrich_append true "-- %F{white}${omg_should_push_symbol}%F{black}  +${commits_ahead}" "${black_on_red}")
+                        prompt+=$(enrich_append true "-- %F{white}${omg_should_push_symbol}%F{black}  +${commits_ahead}" "${black_on_highlight}")
                     fi
                     if [[ $commits_ahead == 0 && $commits_behind == 0 ]]; then
-                         prompt+=$(enrich_append true " --   -- " "${black_on_red}")
+                         prompt+=$(enrich_append true " --   -- " "${black_on_highlight}")
                     fi
                     
                 fi
-                prompt+=$(enrich_append true "(${current_branch} ${type_of_upstream} ${upstream//\/$current_branch/})" "${black_on_red}")
+                prompt+=$(enrich_append true "(${current_branch} ${type_of_upstream} ${upstream//\/$current_branch/})" "${black_on_highlight}")
             fi
         fi
-        prompt+=$(enrich_append ${is_on_a_tag} "${omg_is_on_a_tag_symbol} ${tag_at_current_commit}" "${black_on_red}")
-        prompt+="%k%F{red}%k%f
+        prompt+=$(enrich_append ${is_on_a_tag} "${omg_is_on_a_tag_symbol} ${tag_at_current_commit}" "${black_on_highlight}")
+        prompt+="%k%F{$highlight}%k%f
 ${omg_second_line}"
     else
         prompt="${omg_ungit_prompt}"
