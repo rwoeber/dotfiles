@@ -1,4 +1,4 @@
 HOSTNAME="macbook"
 TAGS="rwoeber freebsd zsh vim git tmux ruby postgresql"
-SYMLINK_DIRS="zsh vim bundle"
+SYMLINK_DIRS="zsh vim bundle gittemplate"
 EXCLUDES="README.markdown"
