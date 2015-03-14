@@ -81,7 +81,6 @@
 [diff]
   renames = copies
   mnemonicprefix = true
-  tool = Kaleidoscope
   algorithm = histogram
 
 [diff "zip"]
@@ -89,10 +88,6 @@
 
 [difftool]
   prompt = false
-
-[difftool "Kaleidoscope"]
-  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
-
 
 
 [apply]
@@ -104,11 +99,11 @@
 [merge]
   stat = true
 
-[push] 
+[push]
   default = simple
 
 [pull]
-  rebase = true  
+  rebase = true
 
 [branch]
   autosetuprebase = always
