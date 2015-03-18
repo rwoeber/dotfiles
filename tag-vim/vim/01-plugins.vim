@@ -27,6 +27,7 @@ Plugin 'ryanss/vim-hackernews'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-haml'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'slim-template/vim-slim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
