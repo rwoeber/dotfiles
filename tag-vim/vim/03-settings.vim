@@ -38,5 +38,6 @@ set showmatch                          " show matching brackets (half of a secon
 set hlsearch                           " When there is a previous search pattern, highlight all its matches.
 
 
+set updatetime=750                     " swapfile write and gitgutter delay
 
 
