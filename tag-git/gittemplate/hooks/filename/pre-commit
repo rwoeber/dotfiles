@@ -1,7 +1,0 @@
-#!/bin/sh
-# # Disallow non-ascii file names.  The printable range starts at the
-# # space character and ends with tilde.
-if test "$(git diff --cached --name-only --diff-filter=A -z $against | LC_ALL=C tr -d '[ -~]\0')"; then
-    die 'Non-ascii file names may not be added:
-'"$(git diff --cached --name-only --diff-filter=A $against)"
-fi
