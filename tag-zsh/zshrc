@@ -30,6 +30,7 @@ esac
 antigen-apply
 
 alias vi=vim
+alias imix="iex -S mix"
 
 
 HISTFILE=${HOME}/.zsh_history
