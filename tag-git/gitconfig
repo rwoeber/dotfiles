@@ -99,6 +99,9 @@
 [merge]
   stat = true
 
+[fetch]
+  prune = true
+
 [push]
   default = simple
 
@@ -122,4 +125,4 @@
 [init]
 	templatedir = ~/.gittemplate
 [commit]
-  template = ~/.gitmessage  
+  template = ~/.gitmessage
