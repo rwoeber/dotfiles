@@ -85,3 +85,5 @@ export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nu nonu noma' -c 
 
 
 export PATH=./.bin:${HOME}/bin:${HOME}/.dotfiles/.bin:${PATH}
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
