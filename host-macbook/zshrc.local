@@ -1,7 +1,3 @@
-alias dadv='java -jar  -Dfile.encoding=ISO-8859-1 /Applications/DaDViewer.app/Contents/Resources/Java/DaDViewer.jar'
-export CVSROOT=":ext:woeber@cvs.intern.iwelt.de:/usr/local/cvsroot"
 export PERL5LIB="/Applications/Xcode.app/Contents/Developer/Library/Perl/5.16/darwin-thread-multi-2level/"
-export ORACLE_HOME=/Library/Oracle/instantclient
-export DYLD_LIBRARY_PATH=$ORACLE_HOME
 stty erase ^H
 alias vi=vim

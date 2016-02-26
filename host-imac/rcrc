@@ -1,4 +1,4 @@
-HOSTNAME="macbook"
+HOSTNAME="imac"
 TAGS="rwoeber osx zsh vim git tmux ruby postgresql mysql"
 SYMLINK_DIRS="zsh vim bundle gittemplate"
 EXCLUDES="README.markdown"
