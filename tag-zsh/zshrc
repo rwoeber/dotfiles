@@ -81,6 +81,7 @@ export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nu nonu noma' -c 
 #fi
 
 [[ -f ~/.zshrc.os ]] && source ~/.zshrc.os
+[[ -f ~/.zshrc.host ]] && source ~/.zshrc.host
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 

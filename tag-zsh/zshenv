@@ -13,4 +13,5 @@ export OS_TYPE=`uname -s`
 export ANT_ARGS='-logger org.apache.tools.ant.listener.AnsiColorLogger'
 
 [[ -f ~/.zshenv.os ]] && source ~/.zshenv.os
+[[ -f ~/.zshenv.host ]] && source ~/.zshenv.host
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
