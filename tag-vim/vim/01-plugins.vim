@@ -25,8 +25,13 @@ Plugin 'tpope/vim-vinegar'
 " Language Support
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-haml'
-Plugin 'elixir-lang/vim-elixir'
 Plugin 'slim-template/vim-slim'
+Plugin 'slashmili/alchemist.vim'
+Plugin 'powerman/vim-plugin-AnsiEsc.git'
+Plugin 'lucidstack/hex.vim'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'mattreduce/vim-mix'
+
 Plugin 'wakatime/vim-wakatime'
 
 call vundle#end()            " required
