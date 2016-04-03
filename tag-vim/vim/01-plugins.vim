@@ -128,7 +128,9 @@ endfunction
 
 
 " use the silver searcher instead of ack
-let g:ackprg = 'ag --nogroup --nocolor --column'
+if executable('ag')
+  let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
 
 nnoremap <silent> <F5> :NERDTreeTabsToggle<CR>
 
