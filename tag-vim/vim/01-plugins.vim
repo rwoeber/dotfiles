@@ -126,13 +126,9 @@ function! CtrlPStatusFunc_2(str)
 endfunction
 
 
-
 " use the silver searcher instead of ack
 if executable('ag')
   let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
-
-nnoremap <silent> <F5> :NERDTreeTabsToggle<CR>
-
 
 let g:user_emmet_leader_key = '<c-e>'
