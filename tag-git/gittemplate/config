@@ -1,0 +1,3 @@
+[remote "origin"]
+  push = +refs/tags/*:refs/tags/*
+  tagopt = --tags

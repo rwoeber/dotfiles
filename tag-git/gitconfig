@@ -16,7 +16,7 @@
   assume = update-index --assume-unchanged
   assumed = "!git ls-files -v | grep ^h | cut -c 3-"
   at = add --intent-to-add
-	authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"  
+  authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
   backup = push --force --mirror backup
   br = branch -vv
   ci = commit
@@ -84,7 +84,7 @@
   algorithm = histogram
 
 [diff "zip"]
-	textconv = unzip -c -a
+  textconv = unzip -c -a
 
 [difftool]
   prompt = false
@@ -111,21 +111,14 @@
 [branch]
   autosetuprebase = always
 
-[branch "master"]
-  remote = origin
-
-[remote "origin"]
-  push = master
-  push = +refs/tags/*:refs/tags/*
-  tagopt = --tags
 
 [include]
   path = ~/.gitconfig.local
 
 [init]
-	templatedir = ~/.gittemplate
+    templatedir = ~/.gittemplate
 [commit]
   template = ~/.gitmessage
 [pager]
-	diff = diff-so-fancy | less --tabs=1,5 -RFX
-	show = diff-so-fancy | less --tabs=1,5 -RFX
+    diff = diff-so-fancy | less --tabs=1,5 -RFX
+    show = diff-so-fancy | less --tabs=1,5 -RFX
