@@ -70,7 +70,6 @@ zstyle ':completion:*:hosts' hosts $_ssh_hosts
 
 # Ruby
 alias rake="noglob rake"
-alias gemdir="open `gem env gemdir`/gems"
 
 export LESS="-X ${LESS}"
 # use vim as manpager
