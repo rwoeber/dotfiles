@@ -15,3 +15,4 @@ au BufWinEnter * let w:m2=matchadd('OverLength',         '\%>80v.\+', -1)
 au BufWinEnter * let w:m2=matchadd('TrailingWhitespace', '\s\+$', -1)
 
 set colorcolumn=+1
+let &showbreak = '↪> '
