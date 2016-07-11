@@ -82,6 +82,7 @@
   renames = copies
   mnemonicprefix = true
   algorithm = histogram
+  compactionHeuristic = true
 
 [diff "zip"]
   textconv = unzip -c -a
