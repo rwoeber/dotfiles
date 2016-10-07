@@ -2,25 +2,24 @@ source ${HOME}/.dotfiles/.antigen/antigen.zsh
 
 antigen use oh-my-zsh
 
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle --url=${HOME} --loc=".dotfiles/.local/rwoeber" --btype=theme --no-local-clone
 
-antigen bundle capistrano
+
 antigen bundle bundler
-antigen bundle chruby
-antigen bundle gem
-antigen bundle git
 antigen bundle mix
 antigen bundle node
 antigen bundle npm
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle arialdomartini/oh-my-git
-antigen bundle --url=${HOME} --loc=".dotfiles/.local/rwoeber" --btype=theme --no-local-clone
+antigen bundle gem
 
+antigen bundle capistrano
+antigen bundle chruby
+antigen bundle git
 
 case $(uname -s) in
 Darwin)
    antigen bundle brew
    antigen bundle docker
-   antigen bundle golang
    antigen bundle vagrant
    ;;
 FreeBSD)
