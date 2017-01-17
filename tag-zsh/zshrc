@@ -5,6 +5,7 @@ if ! zgen saved; then
 
   # specify plugins here
   zgen oh-my-zsh
+  zgen oh-my-zsh plugins/chruby
   zgen oh-my-zsh plugins/bundler
   zgen oh-my-zsh plugins/capistrano
   zgen oh-my-zsh plugins/mix
