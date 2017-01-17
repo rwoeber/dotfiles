@@ -34,6 +34,7 @@ Plugin 'powerman/vim-plugin-AnsiEsc.git'
 Plugin 'lucidstack/hex.vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'mattreduce/vim-mix'
+Plugin 'vimwiki/vimwiki'
 
 Plugin 'wakatime/vim-wakatime'
 
@@ -134,3 +135,8 @@ if executable('ag')
 endif
 
 let g:user_emmet_leader_key = '<c-e>'
+
+"let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+let g:vimwiki_list = [{'path': '~/wiki/',
+                         \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_listsyms = '✗○◐●✓'
