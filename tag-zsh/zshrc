@@ -5,17 +5,17 @@ if ! zgen saved; then
 
   # specify plugins here
   zgen oh-my-zsh
-  zgen oh-my-zsh plugins/chruby
+  zgen oh-my-zsh plugins/asdf
   zgen oh-my-zsh plugins/bundler
   zgen oh-my-zsh plugins/capistrano
   zgen oh-my-zsh plugins/mix
   zgen oh-my-zsh plugins/brew
-  
+
   zgen load zsh-users/zsh-syntax-highlighting
-  
+
   zgen load "${HOME}/.dotfiles/.local/agnoster.zsh-theme"
 
-  
+
   # generate the init script from plugins above
   zgen save
 fi
