@@ -40,8 +40,6 @@ Install the plugins
 Update
 -------
 
-* Be sure to update `.dotfiles/.antigen/antigen.zsh` every now and then.
-
 * The same is recommended for the vim plugins (use `:PluginUpdate`)
 
 

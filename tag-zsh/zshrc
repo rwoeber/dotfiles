@@ -1,28 +1,7 @@
-source "${HOME}/.dotfiles/zgen/zgen.zsh"
-
-# if the init scipt doesn't exist
-if ! zgen saved; then
-
-  # specify plugins here
-  zgen oh-my-zsh
-  zgen oh-my-zsh plugins/asdf
-  zgen oh-my-zsh plugins/bundler
-  zgen oh-my-zsh plugins/capistrano
-  zgen oh-my-zsh plugins/mix
-  zgen oh-my-zsh plugins/brew
-
-  zgen load zsh-users/zsh-syntax-highlighting
-
-  zgen load "${HOME}/.dotfiles/.local/agnoster.zsh-theme"
-
-
-  # generate the init script from plugins above
-  zgen save
-fi
-
-
 alias vi=vim
 alias imix="iex -S mix"
+alias ll="ls -lG"
+alias lsa="ls -laG"
 
 
 HISTFILE=${HOME}/.zsh_history
@@ -37,6 +16,8 @@ setopt extended_history
 setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
+setopt prompt_subst
+
 unsetopt correctall
 
 zstyle ':completion:*' insert-tab pending
@@ -63,6 +44,8 @@ zstyle ':completion:*:hosts' hosts $_ssh_hosts
 # Ruby
 alias rake="noglob rake"
 
+source "${HOME}/.dotfiles/.local/rw2.zsh-theme"
+
 
 # Middleman
 alias mms="middleman server"
@@ -82,5 +65,3 @@ export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nu nonu noma' -c 
 
 
 export PATH=./.bin:${HOME}/bin:${HOME}/.dotfiles/.bin:${PATH}
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
