@@ -28,6 +28,14 @@ zstyle ':completion:*:*cd:*' ignored-patterns '(*/|)(CVS|SCCS|SVN|GIT|HG)'
 zstyle ':completion::*:(git|less|rm|emacs)' ignore-line true
 zstyle ':completion:*' ignore-parents parent pwd
 
+
+# Use emacs key bindings
+bindkey -e                   
+
+# [Esc-w] - Kill from the cursor to the mark
+bindkey '\ew' kill-region   
+bindkey -s '\el' 'ls\n'      
+
 # search history via exaxt prefix match
 bindkey "\e[A"  history-beginning-search-backward-end
 bindkey "\e[B"  history-beginning-search-forward-end
