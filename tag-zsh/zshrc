@@ -1,8 +1,4 @@
-alias vi=vim
-alias imix="iex -S mix"
-alias ll="ls -lG"
-alias lsa="ls -laG"
-
+ZSH_THEME="rw2"
 
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=20000
@@ -20,6 +16,13 @@ setopt prompt_subst
 
 unsetopt correctall
 
+
+bindkey -e      # Use emacs key bindings           
+
+autoload -Uz compinit
+autoload -U history-search-end
+compinit
+
 zstyle ':completion:*' insert-tab pending
 zstyle ':completion:*:manuals' separate-sections true
 
@@ -27,10 +30,9 @@ zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~'
 zstyle ':completion:*:*cd:*' ignored-patterns '(*/|)(CVS|SCCS|SVN|GIT|HG)'
 zstyle ':completion::*:(git|less|rm|emacs)' ignore-line true
 zstyle ':completion:*' ignore-parents parent pwd
+zstyle -d ':completion:*:hosts' hosts
+zstyle ':completion:*:hosts' hosts $_ssh_hosts
 
-
-# Use emacs key bindings
-bindkey -e                   
 
 # [Esc-w] - Kill from the cursor to the mark
 bindkey '\ew' kill-region   
@@ -42,34 +44,35 @@ bindkey "\e[B"  history-beginning-search-forward-end
 bindkey "OA" history-beginning-search-backward-end
 bindkey "OB" history-beginning-search-forward-end
 
-autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 
-zstyle -d ':completion:*:hosts' hosts
-zstyle ':completion:*:hosts' hosts $_ssh_hosts
-
-# Ruby
-alias rake="noglob rake"
-
-source "${HOME}/.dotfiles/.local/rw2.zsh-theme"
-
-
-# Middleman
-alias mms="middleman server"
-alias mmb="middleman build"
 
 export LESS="-X ${LESS}"
 # use vim as manpager
 export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nu nonu noma' -c 'colo rich' -"
 
+
+alias vi=vim
+
+alias lsa='ls -lah'
+alias l='ls -lah'
+alias ll='ls -lh'
+alias la='ls -lAh'
+
+alias rake="noglob rake"
+alias imix="iex -S mix"
+
+
 #if (which tmux >/dev/null) && [[ -o login ]] &&  [[ -z "$TMUX" ]] && [[ -f ~/.dotfiles//scripts/tmux-login ]]; then
 #  (tmux list-sessions 2>/dev/null | grep -q attached ) || exec zsh "$HOME/.dotfiles/scripts/tmux-login" $(which tmux)
 #fi
 
-[[ -f ~/.zshrc.os ]] && source ~/.zshrc.os
-[[ -f ~/.zshrc.host ]] && source ~/.zshrc.host
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+[[ -f "${HOME}/.zshrc.os" ]]    && source "${HOME}/.zshrc.os"
+[[ -f "${HOME}/.zshrc.host" ]]  && source "${HOME}/.zshrc.host"
+[[ -f "${HOME}/.zshrc.local" ]] && source "${HOME}/.zshrc.local"
 
+source "${HOME}/.dotfiles/lib/themes/${ZSH_THEME}.zsh-theme"
 
 export PATH=./.bin:${HOME}/bin:${HOME}/.dotfiles/.bin:${PATH}
+

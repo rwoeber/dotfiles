@@ -1,4 +1,4 @@
 HOSTNAME="fredda"
 TAGS="rwoeber freebsd zsh vim git tmux ruby postgresql"
 SYMLINK_DIRS="zsh vim bundle gittemplate"
-EXCLUDES="README.markdown zgen"
+EXCLUDES="README.markdown lib"
