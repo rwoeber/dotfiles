@@ -1,6 +1,7 @@
+stty erase ^H
+
 export LSCOLORS="GxFxCxDxBxEgEdAbAgAcAd"
 export BROWSER="open"
-
 
 
 [[ -f "${HOME}/.iterm2_shell_integration.zsh" ]] && source "${HOME}/.iterm2_shell_integration.zsh"

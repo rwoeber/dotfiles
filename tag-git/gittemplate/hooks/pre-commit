@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# https://stackoverflow.com/questions/53121208/git-dir-no-longer-set-in-pre-commit-hooks
+GIT_DIR=${GIT_DIR-`git rev-parse --git-common-dir`}
+
 die() {
     printf '\e[41;1m pre-commit hook failure \e[0m\n' 1>&2
     echo '-----------------------' 1>&2

@@ -26,9 +26,11 @@
   cot = checkout -t
   d = diff
   dc = diff --cached
-  dt = difftool
-  dtw = difftool --ignore-space-at-eol -b -w --ignore-blank-lines
   dw = diff --ignore-space-at-eol -b -w --ignore-blank-lines
+  dk = difftool -t Kaleidoscope
+  dkw = difftool -t Kaleidoscope --ignore-space-at-eol -b -w --ignore-blank-lines
+  dk = difftool -t vimdiff
+  dkw = difftool -t vimdiff --ignore-space-at-eol -b -w --ignore-blank-lines
   filelog = log -u
   human = name-rev --name-only --refs='refs/heads/*'
   ignored = ls-files --exclude-standard --ignored --others
@@ -83,6 +85,7 @@
   mnemonicprefix = true
   algorithm = histogram
   compactionHeuristic = true
+  tool = Kaleidoscope
 
 [diff "zip"]
   textconv = unzip -c -a
@@ -90,6 +93,8 @@
 [difftool]
   prompt = false
 
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 
 [apply]
   whitespace = nowarn
@@ -112,14 +117,15 @@
 [branch]
   autosetuprebase = always
 
-
 [include]
   path = ~/.gitconfig.local
 
 [init]
     templatedir = ~/.gittemplate
+
 [commit]
   template = ~/.gitmessage
+
 [pager]
-    diff = diff-so-fancy | less --tabs=1,5 -RFX
-    show = diff-so-fancy | less --tabs=1,5 -RFX
+  diff = diff-so-fancy | less --tabs=1,5 -RFX
+  show = diff-so-fancy | less --tabs=1,5 -RFX
