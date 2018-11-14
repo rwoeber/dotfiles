@@ -21,6 +21,9 @@ bindkey -e      # Use emacs key bindings
 
 autoload -Uz compinit
 autoload -U history-search-end
+
+# remove audited paths from completion
+for p in $fpath; do; if [[ $(stat -f '%Su' ${p}) != $(whoami) ]] && [[ $(stat -f '%Su' ${p}) != 'root' ]]; then fpath=(${fpath#${p}}); fi; done
 compinit
 
 zstyle ':completion:*' insert-tab pending
