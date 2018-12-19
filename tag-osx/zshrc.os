@@ -17,3 +17,4 @@ alias away='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resourc
 # Middleman
 alias mms="middleman server"
 alias mmb="middleman build"
+alias sleeplog='pmset -g log|grep -e " Sleep  " -e " Wake  "'
